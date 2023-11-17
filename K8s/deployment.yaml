@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: imgclass
+  name: tesla
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: imageclassifier
+      app: stockprediction
   template:
     metadata:
       labels:
-        app: imageclassifier
+        app: stockprediction
     spec:
       containers:
       - name: cv-app
-        image: gcr.io/deploying-apps-403014/imgwebapp:v1
+        image: gcr.io/deploying-apps-403014/app:v1
         ports:
         - containerPort: 8501
