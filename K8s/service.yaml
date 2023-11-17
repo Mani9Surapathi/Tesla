@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: stockprediction
+spec:
+  type: LoadBalancer
+  selector:
+    app: stockprediction
+  ports:
+  - port: 80
+    targetPort: 8501
