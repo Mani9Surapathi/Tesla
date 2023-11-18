@@ -124,6 +124,6 @@ while True:
         # Use st.dataframe to display the dataframe in the Streamlit app
         st.subheader('Recent Predictions')
         st.dataframe(predictions_df)
-        time.sleep(3600)
+        time.sleep(7200)
         
 
