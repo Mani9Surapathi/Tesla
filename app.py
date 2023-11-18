@@ -8,12 +8,16 @@ from google.cloud import bigquery
 from google.oauth2 import service_account
 import datetime
 import time
+from tensorflow.keras.models import load_model
 
-
-def load_model():
-    with open('saved_steps.pkl', 'rb') as file:
-        data = pickle.load(file)
-    return data
+# def load_model():
+#     with open('saved_steps.pkl', 'rb') as file:
+#         data = pickle.load(file)
+#     return data
+with open('saved_steps.pkl', 'rb') as file:
+    data = pickle.load(file)
+model = load_model('model.h5')
+scaler = data["scaler"]
 
 gcp_cred = {
   "type": "service_account",
@@ -33,9 +37,9 @@ gcp_cred = {
 credentials = service_account.Credentials.from_service_account_info(gcp_cred)
 client = bigquery.Client(credentials=credentials, project=gcp_cred['project_id'])
 
-data = load_model()
-model = data["model"]
-scaler = data["scaler"]
+# data = load_model()
+# model = data["model"]
+# scaler = data["scaler"]
 features = ['Open', 'High', 'Low', 'Close', 'Volume']
 time_step = 30
 st.title("Tesla Stock Price Prediction")
